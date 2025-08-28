@@ -16,7 +16,7 @@ export default function HomePage() {
             alt="돋보길 앱을 사용하는 어르신"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white px-4">
               <h1 className="mb-6 text-6xl font-bold md:text-7xl drop-shadow-lg">돋보길</h1>

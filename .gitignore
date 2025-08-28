@@ -1,0 +1,39 @@
+# Next.js 관련 .gitignore 템플릿
+# 목적: 빌드 산출물, 환경설정, 의존성 등 버전 관리 불필요 파일 무시
+# 참고: https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#gitignore
+
+# Node.js 의존성
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 빌드 산출물
+.next/
+out/
+dist/
+
+# 환경 변수 및 설정 파일
+.env
+.env.*
+!.env.example
+
+# 로그 및 임시 파일
+*.log
+*.swp
+*.swo
+.DS_Store
+.idea/
+.vscode/
+*.local
+
+# OS별 불필요 파일
+Thumbs.db
+
+# 테스트 커버리지
+coverage/
+
+# 기타
+*.tgz
+*.zip

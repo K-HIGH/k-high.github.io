@@ -15,7 +15,7 @@
 
 import type { NextConfig } from 'next'
 
-const repo = 'landing_page' // ← 본인 repo 이름
+const repo = 'k-high.github.io' // ← 본인 repo 이름
 const isGhPages = process.env.GITHUB_PAGES === 'true' // Actions에서 주입 예정
 
 const config: NextConfig = {

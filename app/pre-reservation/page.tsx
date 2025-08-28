@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { CheckCircle, ArrowLeft, Gift, Star, Clock, AlertCircle } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import { toast } from "@/hooks/use-toast"
+import { Checkbox } from "@/components/ui/checkbox"
 
 export default function PreReservationPage() {
   const [formData, setFormData] = useState({
@@ -23,6 +24,8 @@ export default function PreReservationPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const [requiredConsent, setRequiredConsent] = useState(false)
+  const [marketingConsent, setMarketingConsent] = useState(false)
 
   const preferredFeaturesOptions = [
     "길찾기",
@@ -304,9 +307,83 @@ export default function PreReservationPage() {
                     />
                   </div>
 
+                  <div className="space-y-6 p-6 bg-gray-50 rounded-lg border-2 border-gray-200">
+                    <h3 className="text-xl font-bold text-gray-900">개인정보 수집 및 이용 동의</h3>
+
+                    <div className="space-y-4">
+                      <div className="p-4 bg-white rounded-lg border border-gray-200">
+                        <div className="flex items-start space-x-3 mb-3">
+                          <Checkbox
+                            id="required-consent"
+                            checked={requiredConsent}
+                            onCheckedChange={(checked) => setRequiredConsent(checked as boolean)}
+                            className="h-5 w-5 mt-1"
+                          />
+                          <div className="flex-1">
+                            <Label
+                              htmlFor="required-consent"
+                              className="text-lg font-medium text-gray-900 cursor-pointer"
+                            >
+                              [필수] 개인정보 수집 및 이용 동의
+                            </Label>
+                            <div className="mt-2 text-sm text-gray-600 leading-relaxed">
+                              <p className="mb-2">
+                                <strong>수집 목적:</strong> 돋보길 사전 예약 서비스 제공, 출시 알림
+                              </p>
+                              <p className="mb-2">
+                                <strong>수집 항목:</strong> 성명, 연락처, 이메일(선택), 연령대(선택)
+                              </p>
+                              <p className="mb-2">
+                                <strong>보유 기간:</strong> 서비스 출시 후 1년 또는 동의 철회 시까지
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                ※ 동의를 거부할 권리가 있으나, 거부 시 사전 예약 서비스 이용이 제한됩니다.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-white rounded-lg border border-gray-200">
+                        <div className="flex items-start space-x-3">
+                          <Checkbox
+                            id="marketing-consent"
+                            checked={marketingConsent}
+                            onCheckedChange={(checked) => setMarketingConsent(checked as boolean)}
+                            className="h-5 w-5 mt-1"
+                          />
+                          <div className="flex-1">
+                            <Label
+                              htmlFor="marketing-consent"
+                              className="text-lg font-medium text-gray-900 cursor-pointer"
+                            >
+                              [필수] 출시 정보 수신 동의
+                            </Label>
+                            <div className="mt-2 text-sm text-gray-600 leading-relaxed">
+                              <p className="mb-2">
+                                <strong>수신 내용:</strong> 돋보길 출시 정보
+                              </p>
+                              <p className="mb-2">
+                                <strong>수신 방법:</strong> 문자메시지(SMS), 이메일
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                ※ 출시 정보 수신에 동의하지 않을 시, 관련 정보 수신이 불가능합니다.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text-sm text-gray-500 leading-relaxed">
+                      <p>개인정보보호법에 따라 위의 내용을 고지하며, 동의를 구합니다.</p>
+                      <p>수집된 개인정보는 목적 외 용도로 이용되지 않으며, 제3자에게 제공되지 않습니다.</p>
+                    </div>
+                  </div>
+
                   <Button
                     type="submit"
-                    disabled={isLoading}
+                    disabled={isLoading || !requiredConsent || !marketingConsent}
                     className="w-full h-16 text-xl font-bold bg-yellow-400 hover:bg-yellow-500 text-gray-900 border-2 border-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isLoading ? "처리 중..." : "사전 예약하기"}

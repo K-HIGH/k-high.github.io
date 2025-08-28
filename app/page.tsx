@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Shield, Phone, Users, ArrowRight } from "lucide-react"
 
+console.log(process.env.NEXT_PUBLIC_SUPABASE_URL)
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">

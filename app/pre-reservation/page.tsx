@@ -42,13 +42,13 @@ export default function PreReservationPage() {
             <br />
             특별 혜택도 함께 받으세요!
           </p>
-          <div className="mb-12">
-            <img
+          {/* <div className="mb-12"> */}
+            {/* <img
               src="/elderly-person-excitedly-looking-at-smartphone-sho.png"
               alt="돋보길 사전 예약 완료 화면을 보는 어르신"
               className="mx-auto rounded-2xl shadow-2xl"
-            />
-          </div>
+            /> */}
+          {/* </div> */}
         </div>
       </section>
 

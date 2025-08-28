@@ -11,8 +11,8 @@ pnpm-debug.log*
 
 # 빌드 산출물
 .next/
-out/
-dist/
+# out/
+# dist/
 
 # 환경 변수 및 설정 파일
 .env
